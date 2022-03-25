@@ -12,9 +12,9 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', HomeController::class);
 
-Route::get('cursos', [CursoController::class,'index']);
-
-Route::get('cursos/create', [CursoController::class,'create']);
-
-// categoria? is left with the sign because it is optional, and should be left null.
-Route::get('cursos/{curso}/{categoria?}', [CursoController::class, 'show']);
+Route::controller(CursoController::class)->group(function(){
+    Route::get('cursos','index');
+    Route::get('cursos/create','create');
+    /* categoria? se deja con el signo porque es opcional, y se debe dejar null*/
+    Route::get('cursos/{curso}/{categoria?}','show');
+});
