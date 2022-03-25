@@ -7,19 +7,17 @@ use Illuminate\Http\Request;
 class CursoController extends Controller
 {
     public function index(){
-        return "Bienvenido a la página principal ";
+        return view('cursos.index');
     }
 
     public function create(){
-        return "En esta página podrás crear un curso";
+        return view('cursos.create');
     }
 
-    public function show($curso, $categoria = null){
-        if ($categoria){
-            return "Bienvenido al curso $curso, de la categoría $categoria";
-        } else 
-        {
-            return "Bienvenido al curso: $curso";
-        }
+    public function show($curso){
+        /* compact()-> compact is only useful if the sending variable is called the same as the variable received in data */
+        return view('cursos.show', compact('curso'));
+        /*return view('cursos.show', ['curso' => $curso]);*/
     }
+
 }
