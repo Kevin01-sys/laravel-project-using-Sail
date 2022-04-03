@@ -1,0 +1,15 @@
+commands for working with Eloquent
+php artisan tinker 
+use App\Models\Curso; 
+$cursos = Curso::all();
+$cursos = Curso::where('categoria','Diseño web')->get();
+$cursos = Curso::where('categoria','Diseño web')->orderBy('id','desc')->get();
+$cursos = Curso::where('categoria','Diseño web')->orderBy('id','desc')->first();
+$cursos = Curso::select('name','descripcion')->get();
+$cursos = Curso::select('name','descripcion')->orderBy('id','asc')->get();
+$cursos = Curso::select('name','descripcion','categoria')->orderBy('id','asc')->where('categoria','Diseño web')->get();
+$cursos = Curso::select('name as title','descripcion','categoria')->where('categoria','Diseño web')->take(5)->get();
+$curso = Curso::where('name', 'Reiciendis accusamus maiores quis magni.')->get();
+$curso = Curso::find(5);
+$curso= Curso::where('id','>',45)->get();
+$curso= Curso::where('name','like','% perferendis %')->get();
