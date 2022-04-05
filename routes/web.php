@@ -13,9 +13,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/', HomeController::class);
 
 Route::controller(CursoController::class)->group(function(){
-    Route::get('cursos','index');
-    Route::get('cursos/create','create');
+    Route::get('cursos','index')->name('cursos.index');
+    Route::get('cursos/create','create')->name('cursos.create');
     /* categoria? se deja con el signo porque es opcional, y se debe dejar null*/
-    Route::get('cursos/{curso}','show');
+    Route::get('cursos/{id}','show')->name('cursos.show');
     //Route::get('cursos/{curso}/{categoria?}','show');
 });
