@@ -15,7 +15,10 @@ Route::get('/', HomeController::class);
 Route::controller(CursoController::class)->group(function(){
     Route::get('cursos','index')->name('cursos.index');
     Route::get('cursos/create','create')->name('cursos.create');
+    Route::post('cursos','store')->name('cursos.store');
     /* categoria? se deja con el signo porque es opcional, y se debe dejar null*/
     Route::get('cursos/{id}','show')->name('cursos.show');
+    Route::get('cursos/{curso}/edit','edit')->name('cursos.edit');
+    Route::put('cursos/{curso}','update')->name('cursos.update');
     //Route::get('cursos/{curso}/{categoria?}','show');
 });
