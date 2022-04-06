@@ -9,10 +9,10 @@ class CursoController extends Controller
 {
     public function index(){
 
-        $cursos=Curso::paginate();
         $cursos=Curso::orderBy('id','desc')->paginate();
-        //return $cursos;
+        //$cursos=Curso::paginate();
         //$cursos=Curso::all();
+        //return $cursos;
         return view('cursos.index', compact('cursos'));
     }
 
@@ -21,7 +21,12 @@ class CursoController extends Controller
     }
 
     public function store(Request $request){
-        //return $request;
+        $request->validate([
+            'name' => 'required|max:10',
+            'descripcion' => 'required|min:10',
+            'categoria' => 'required',
+        ]);
+        
         $curso = new Curso();
 
         $curso->name = $request->name;
@@ -41,19 +46,19 @@ class CursoController extends Controller
         /*return view('cursos.show', ['curso' => $curso]);*/
     }
 
-    /*public function edit($id){
-        $curso=Curso::find($id);
-        return $curso;
-    }*/
-
-
     public function edit(Curso $curso){
         //return $curso;
         return view('cursos.edit', compact('curso'));
     }
 
     public function update(Request $request,Curso $curso){
-        //return $request->all();
+
+        $request->validate([
+            'name' => 'required',
+            'descripcion' => 'required',
+            'categoria' => 'required',
+        ]);
+
         $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
@@ -61,8 +66,6 @@ class CursoController extends Controller
         $curso->save();
 
         return redirect()->route('cursos.show', $curso);
-
-        //return $curso;
     }
 
 }
