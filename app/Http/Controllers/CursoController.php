@@ -22,20 +22,23 @@ class CursoController extends Controller
     }
 
     public function store(StoreCurso $request){
-        /*$request->validate([
+        /*Here is a way to validate forms without the FormRequest class
+        $request->validate([
             'name' => 'required|max:10',
             'descripcion' => 'required|min:10',
             'categoria' => 'required',
         ]);*/
-        
-        $curso = new Curso();
 
+        /*create()->creates an instance of the class Course and adds the properties "name",
+         "description" and "category" to it, all of which will be stored in the variable $course and saves the record in the database.*/
+        /*$curso = new Curso();
         $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
-        
-        $curso->save();
+        $curso->save();*/
         //return $curso;
+        
+        $curso = Curso::create($request->all());
         return redirect()->route('cursos.show', $curso);
     }
 
@@ -52,19 +55,9 @@ class CursoController extends Controller
         return view('cursos.edit', compact('curso'));
     }
 
-    public function update(Request $request,Curso $curso){
+    public function update(StoreCurso $request,Curso $curso){
 
-        $request->validate([
-            'name' => 'required',
-            'descripcion' => 'required',
-            'categoria' => 'required',
-        ]);
-
-        $curso->name = $request->name;
-        $curso->descripcion = $request->descripcion;
-        $curso->categoria = $request->categoria;
-
-        $curso->save();
+        $curso->update($request->all());
 
         return redirect()->route('cursos.show', $curso);
     }

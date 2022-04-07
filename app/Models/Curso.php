@@ -9,8 +9,12 @@ class Curso extends Model
 {
     use HasFactory;
 
-    // The following command line is used to take a specific model from the database
-    // If nothing is set, the Eloquent rule is automatically used.
-    // Eloquent's standard for english words -> User (class: initial capital letter - singular) - users (database table: initial lower case - plural) 
-    //protected $table = "users";
+    /* The following command line is used to take a specific model from the database
+     If nothing is set, the Eloquent rule is automatically used.
+     Eloquent's standard for english words -> User (class: initial capital letter - singular) - users (database table: initial lower case - plural) 
+    protected $table = "users";*/
+
+    /*protected $fillable = ['name','descripcion','categoria'];*/
+    protected $guarded = [];
+
 }
