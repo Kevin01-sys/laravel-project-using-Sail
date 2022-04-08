@@ -42,8 +42,8 @@ class CursoController extends Controller
         return redirect()->route('cursos.show', $curso);
     }
 
-    public function show($id){
-        $curso=Curso::find($id);
+    public function show($curso){
+        $curso=Curso::find($curso);
         //return $curso;
         /* compact()-> compact is only useful if the sending variable is called the same as the variable received in data */
         return view('cursos.show', compact('curso'));

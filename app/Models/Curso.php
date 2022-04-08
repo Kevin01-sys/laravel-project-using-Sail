@@ -14,7 +14,9 @@ class Curso extends Model
      Eloquent's standard for english words -> User (class: initial capital letter - singular) - users (database table: initial lower case - plural) 
     protected $table = "users";*/
 
-    /*protected $fillable = ['name','descripcion','categoria'];*/
+    /* following command: use it to create the object with the following properties and ignore the rest 
+    protected $fillable = ['name','descripcion','categoria'];*/
+    /* following command: we indicate the field that we want to ignore */
     protected $guarded = [];
 
 }
