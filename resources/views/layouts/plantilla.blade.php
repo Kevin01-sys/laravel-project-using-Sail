@@ -10,12 +10,20 @@
     
     <!-- favicon -->
     <!-- estilos -->
+    <style>
+        .active{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <!-- header -->
+    @include('layouts.partials.header')
     <!-- nav -->
     @yield('content')
     <!-- footer -->
+    @include('layouts.partials.footer')
     <!-- script -->
 </body>
 </html>
