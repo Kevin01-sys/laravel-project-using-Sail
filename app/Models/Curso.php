@@ -19,4 +19,11 @@ class Curso extends Model
     /* following command: we indicate the field that we want to ignore */
     protected $guarded = [];
 
+    /* the method getRouteKeyName() is overwritten
+    the original takes the id, now we tell it to take the slug */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }

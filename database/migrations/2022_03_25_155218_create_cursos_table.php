@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->id(); # Integer Unsigned  Increment
             $table->string('name'); # varchar
+            $table->string('slug'); # varchar
             $table->text('descripcion');
             $table->timestamps(); # created_at updated_at
         });
